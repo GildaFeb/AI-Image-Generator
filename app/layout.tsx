@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ResponsiveNav } from "@/components/Home/Navbar/ResponsiveNav";
-
+import { Toaster } from "@/components/ui/sonner";
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -37,7 +37,7 @@ export default function RootLayout({
       <body className={`${font.className} bg-gray-900 antialiased`}>
         <ResponsiveNav />
         {children}
-        
+        <Toaster className="bg-white"/>
       </body>
     </html>
   );

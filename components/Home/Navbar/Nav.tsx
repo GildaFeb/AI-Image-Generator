@@ -50,7 +50,7 @@ const Nav = ({openNav}: Props) => {
         <div className="flex items-center space-x-5 md:space-x-8 text-white">
             <ShoppingCart className="w-6 h-6 cursor-pointer transition-transform duration-300 hover:scale-110" />
             <SearchIcon className="w-6 h-6 cursor-pointer transition-transform duration-300 hover:scale-110" />
-            <MenuIcon onClick={openNav} className="w-6 h-6 cursor-pointer transition-transform duration-300 hover:scale-110" />
+            <MenuIcon onClick={openNav} className="w-6 h-6 cursor-pointer transition-transform duration-300 hover:scale-110 md:hidden" />
         </div>
     </div>
   )
