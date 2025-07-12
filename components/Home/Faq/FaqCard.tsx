@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from '@/components/ui/accordion';
 
 const FaqCard = () => {
   return (
@@ -14,7 +14,8 @@ const FaqCard = () => {
           How do I generate an image?
         </AccordionTrigger>
         <AccordionContent>
-          Simply enter a descriptive promqpt in the input field and click "Generate." The AI will create an image based on your input.
+          Simply enter a descriptive promqpt in the input field and click "Generate." The AI will
+          create an image based on your input.
         </AccordionContent>
       </AccordionItem>
 
@@ -23,7 +24,8 @@ const FaqCard = () => {
           Can I download the generated images?
         </AccordionTrigger>
         <AccordionContent>
-          Yes, you can download any generated image by clicking the "Download" button that appears below the result.
+          Yes, you can download any generated image by clicking the "Download" button that appears
+          below the result.
         </AccordionContent>
       </AccordionItem>
 
@@ -32,7 +34,8 @@ const FaqCard = () => {
           Are the images copyright-free?
         </AccordionTrigger>
         <AccordionContent>
-          Generated images are AI-created and typically free to use, but always check the usage rights if you're using them commercially.
+          Generated images are AI-created and typically free to use, but always check the usage
+          rights if you're using them commercially.
         </AccordionContent>
       </AccordionItem>
 
@@ -41,11 +44,12 @@ const FaqCard = () => {
           What should I type in the prompt?
         </AccordionTrigger>
         <AccordionContent>
-          Be as specific and descriptive as possible. For example: "A futuristic city skyline at sunset, cyberpunk style."
+          Be as specific and descriptive as possible. For example: "A futuristic city skyline at
+          sunset, cyberpunk style."
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-  )
-}
+  );
+};
 
-export default FaqCard
+export default FaqCard;

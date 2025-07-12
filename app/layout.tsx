@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "./globals.css";
-import { ResponsiveNav } from "@/components/Home/Navbar/ResponsiveNav";
-import { Toaster } from "@/components/ui/sonner";
+import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+import './globals.css';
+import { ResponsiveNav } from '@/components/Home/Navbar/ResponsiveNav';
+import { Toaster } from '@/components/ui/sonner';
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -13,18 +13,18 @@ import { Toaster } from "@/components/ui/sonner";
 //   subsets: ["latin"],
 // });
 
-
 // code for the button component
 const font = Poppins({
-  variable: "--font-sans",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin"],
+  variable: '--font-sans',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
   // Title and description for the application
-  title: "AI Image Generator",
-  description: "AI Generator is a Next.js application that allows users to generate images using AI.",
+  title: 'AI Image Generator',
+  description:
+    'AI Generator is a Next.js application that allows users to generate images using AI.',
 };
 
 export default function RootLayout({
@@ -34,12 +34,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-     <body className={`${font.className} antialiased bg-gradient-to-b from-gray-950 via-gray-800 to-gray-800 `}>
-  <ResponsiveNav />
-  {children}
-  <Toaster className="bg-white" />
-</body>
-
+      <body
+        className={`${font.className} antialiased bg-gradient-to-b from-gray-950 via-gray-800 to-gray-800 `}
+      >
+        <ResponsiveNav />
+        {children}
+        <Toaster className="bg-white" />
+      </body>
     </html>
   );
 }

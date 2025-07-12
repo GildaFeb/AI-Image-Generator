@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 // basic routing in Next.js 13 with app directory
 // this file is used to handle dynamic routes
