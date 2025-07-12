@@ -34,11 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${font.className} bg-gray-900 antialiased`}>
-        <ResponsiveNav />
-        {children}
-        <Toaster className="bg-white"/>
-      </body>
+     <body className={`${font.className} antialiased bg-gradient-to-b from-gray-950 via-gray-800 to-gray-800 `}>
+  <ResponsiveNav />
+  {children}
+  <Toaster className="bg-white" />
+</body>
+
     </html>
   );
 }

@@ -24,9 +24,10 @@ const Nav = ({openNav}: Props) => {
         }
     }, []);
 
-    const bg_style = navBg ? "bg-gray-900 shadow-md" : "";
+    const bg_style = navBg ? "bg-gray-900 border-gray-900 backdrop-blur-md shadow-md" : "";
+
   return (
-<div className={`flex ${bg_style} items-center justify-between h-[12vh] fixed z-[100] w-full px-6 md:px-16 bg-transparent`}>
+    <div className={`flex ${bg_style} items-center border-b-2 border-gray-800 justify-between h-[12vh] fixed z-[100] w-full px-6 md:px-16 bg-transparent`}>
         {/* Logo */}
         <h1 className="text-3xl font-bold text-white">IMAGEN</h1>
 
