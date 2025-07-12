@@ -89,7 +89,7 @@ const Hero = () => {
     };
 
     return (
-        <div className="w-[95%] pt-16 px-16 min-h-screen mx-auto mt-[10vh] flex flex-col lg:flex-row items-start gap-12">
+        <div className="w-[95%] pt-16 px-16 min-h-screen mx-auto mt-[10vh] pb-16 flex flex-col lg:flex-row items-start gap-12">
             {/* LEFT SIDE: Headline, Input, Tags */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center items-start text-white space-y-6">
                 <h3
@@ -120,7 +120,7 @@ const Hero = () => {
                     variant="destructive"
                     size="lg"
                     onClick={handleGenerateImage}
-                    className="bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:from-blue-600 hover:to-violet-700 w-full sm:w-auto"
+                    className="bg-gradient-to-r cursor-pointer from-blue-500 to-violet-600 text-white hover:from-blue-600 hover:to-violet-700 w-full sm:w-auto"
                 >
                     Generate
                 </Button>
@@ -154,27 +154,35 @@ const Hero = () => {
                 )}
 
                 {/* Image Output */}
-                {image && (
-                <div className="mt-6 w-full">
-                    <img
-                    src={image}
-                    alt="AI Generated"
-                    className="w-full max-h-[400px] object-contain rounded-xl shadow-xl"
-                    loading="lazy"
-                    onLoad={handleImageLoad}
-                    onError={handleImageError}
-                    />
-                    <p className="text-white mt-3 text-base md:text-lg">Image generated successfully!</p>
-                    <Button
-                    onClick={handleDownloadImage}
-                    className="mt-4 bg-orange-500 hover:bg-orange-700"
-                    >
-                    Download
-                    </Button>
-                </div>
-                )}
+                {!loading && (
+                    <div className="mt-6 w-full">
+                        <img
+                        src={image || "/images/p2.jpg"}
+                        alt="AI Generated"
+                        className="w-full max-h-[450px] object-contain rounded-xl shadow-xl"
+                        loading="lazy"
+                        onLoad={image ? handleImageLoad : undefined}
+                        onError={image ? handleImageError : undefined}
+                        />
+                        {image && (
+                        <>
+                            <p className="text-white max-h-[300px] mt-3 text-base md:text-lg">
+                            Image generated successfully!
+                            </p>
+                            <Button
+                            onClick={handleDownloadImage}
+                            className="mt-4 bg-orange-500 hover:bg-orange-700"
+                            >
+                            Download
+                            </Button>
+                        </>
+                        )}
+                    </div>
+                    )}
+
+
             </div>
-            </div>
+        </div>
 
     );
 };
