@@ -38,10 +38,11 @@ const Pricing = () => {
             {/* <div>
                 <PriceCard price="4" user="1" type="Bronze Pack"/>
             </div> */}
-             <div>
+             <div data-aos="fade-right"
+                    data-aos-anchor-placement="top-center">
                 <PriceCard price="8" user="3" type="Silve Pack"/>
             </div>
-            <div>
+            <div data-aos="fade-right" data-aos-anchor-placement="top-center" data-aos-delay="100"> 
                 <PriceCard price="10" user="7" type="Golden Pack"/>
             </div>
 

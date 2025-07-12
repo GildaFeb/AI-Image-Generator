@@ -26,6 +26,7 @@ const responsive = {
 const ImageSlider = () => {
   return (
     <Carousel
+        
         arrows={true}
         swipeable={false}
         draggable={false}

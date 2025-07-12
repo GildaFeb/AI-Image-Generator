@@ -8,6 +8,8 @@ const About = () => {
             {/* Image */}
             <div className='order-2 xl:order-1'>
                 <img 
+                    data-aos="zoom-out"
+                    data-aos-anchor-placement="top-center"
                     src="/images/b5.jpg" 
                     alt="About Us" 
                     className='w-full sm:w-20% md:w-full h-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer'

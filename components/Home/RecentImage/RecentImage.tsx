@@ -9,7 +9,8 @@ const RecentImage = () => {
         <SectionHeading heading="Recent Images" />
         
         {/* Slider */}
-        <div className="w-[90%] md:w-[80%] mx-auto mt-16">
+        <div className="w-[90%] md:w-[80%] mx-auto mt-16" data-aos="fade-right"
+        data-aos-anchor-placement="top-center">
             <ImageSlider />
         </div>
     </div>

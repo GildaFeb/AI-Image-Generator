@@ -8,6 +8,9 @@ const Faq = () => {
             <div>
                 {/* Image */}
                 <img 
+                data-aos="zoom-out"
+                    data-aos-anchor-placement="top-center"
+                    data-aos-delay="300"
                     src="/images/faq.jpg"
                     alt="FAQ"
                     height={500}

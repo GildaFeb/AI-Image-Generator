@@ -14,7 +14,7 @@ const FaqCard = () => {
           How do I generate an image?
         </AccordionTrigger>
         <AccordionContent>
-          Simply enter a descriptive prompt in the input field and click "Generate." The AI will create an image based on your input.
+          Simply enter a descriptive promqpt in the input field and click "Generate." The AI will create an image based on your input.
         </AccordionContent>
       </AccordionItem>
 
