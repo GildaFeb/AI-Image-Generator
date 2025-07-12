@@ -89,78 +89,93 @@ const Hero = () => {
     };
 
     return (
-        <div className="w-[95%] min-h-screen relative mx-auto mt-[20vh]">
-            <div className="relative z-0 text-white flex flex-col items-center justify-center">
-                <h3 data-aos="fade-up" className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center bg-gradient-to-r from-pink-300 via-indigo-200 to-blue-300 bg-clip-text text-transparent z-10">
-                    Create Beautiful Image with <br /> AI Image Generator
+        <div className="w-[95%] pt-16 px-16 min-h-screen mx-auto mt-[10vh] flex flex-col lg:flex-row items-start gap-12">
+            {/* LEFT SIDE: Headline, Input, Tags */}
+            <div className="w-full lg:w-1/2 flex flex-col justify-center items-start text-white space-y-6">
+                <h3
+                data-aos="fade-up"
+                className="text-3xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-pink-300 via-indigo-200 to-blue-300 bg-clip-text text-transparent"
+                >
+                Create Beautiful Images <br /> with AI Image Generator
                 </h3>
-                <p 
-                    data-aos="fade-up"
-                    data-aos-delay="100"
-                    className="mt-4 text-lg sm:text-xl md:text-[1.5rem] text-center max-w-2xl leading-relaxed">
-                    Generate stunning images using AI technology. Just enter your prompt and let the AI do the magic!
+
+                <p
+                data-aos="fade-up"
+                data-aos-delay="100"
+                className="text-base sm:text-lg md:text-xl leading-relaxed max-w-xl"
+                >
+                Generate stunning visuals using AI. Enter your prompt and let the magic happen!
                 </p>
 
-                <div className="h-11 md:h-16 w-[95%] sm:w-[80%] md:w-[80%] lg:w-[70%] xl-[60%] bg-white rounded-lg shadow-lg mt-12 px-2 md:px-4 flex items-center justify-between">
-                    <input
-                        type="text"
-                        placeholder="Enter your prompt here..."
-                        className="w-full h-[80%] p-4 rounded-lg bg-gray-800 outline-none text-white block flex-1 placeholder:text-xs sm:placeholder:text-sm md:placeholder:text-base lg:placeholder:text-lg xl:placeholder:text-xl"
-                        value={prompt}
-                        onChange={(e) => setPrompt(e.target.value)}
-                    />
-                    <Button
-                        variant="destructive"
-                        size="lg"
-                        onClick={handleGenerateImage}
-                        className="bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:from-blue-600 hover:to-violet-700 ml-2 h-[80%] my-2 transition-all duration-300 cursor-pointer"
-                    >
-                        Generate Image
-                    </Button>
+                {/* Prompt Input + Button */}
+                <div className="w-full flex flex-col sm:flex-row items-center gap-4">
+                <input
+                    type="text"
+                    placeholder="Enter your prompt here..."
+                    className="w-full p-4 rounded-lg bg-gray-800 outline-none text-white placeholder:text-sm sm:placeholder:text-base"
+                    value={prompt}
+                    onChange={(e) => setPrompt(e.target.value)}
+                />
+                <Button
+                    variant="destructive"
+                    size="lg"
+                    onClick={handleGenerateImage}
+                    className="bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:from-blue-600 hover:to-violet-700 w-full sm:w-auto"
+                >
+                    Generate
+                </Button>
                 </div>
 
                 {/* Tags */}
-                <div className="mt-8 flex flex-row sm:flex-row sm:items-center sm:justify-center gap-2 sm:gap-4 px-4 text-center">
-                    <p className="text-sm sm:text-base md:text-lg font-medium">Popular Tags</p>
-                    <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-2 sm:mt-0">
-                        <Button variant="outline" size="sm" className="text-xs sm:text-sm md:text-base">Creative</Button>
-                        <Button variant="outline" size="sm" className="text-xs sm:text-sm md:text-base">Hyperreality</Button>
-                        <Button variant="outline" size="sm" className="text-xs sm:text-sm md:text-base">Steampunk</Button>
-                        <Button variant="outline" size="sm" className="text-xs sm:text-sm md:text-base">Animation</Button>
-                        <Button variant="outline" size="sm" className="text-xs sm:text-sm md:text-base">Business</Button>
-                    </div>
+                <div className="w-full">
+                <p className="text-sm sm:text-base md:text-lg font-medium mb-2">Popular Tags</p>
+                <div className="flex flex-wrap gap-2">
+                    {["Creative", "Hyperreality", "Steampunk", "Animation", "Business"].map((tag) => (
+                    <Button
+                        key={tag}
+                        variant="outline"
+                        size="sm"
+                        className="text-xs sm:text-sm md:text-base"
+                    >
+                        {tag}
+                    </Button>
+                    ))}
                 </div>
+                </div>
+            </div>
 
+            {/* RIGHT SIDE: Loader + Image Output */}
+            <div className="w-full lg:w-1/2 flex flex-col items-center justify-start text-center">
                 {/* Loader */}
                 {loading && (
-                    <div className="flex justify-center mt-6">
-                        <Loader className="animate-spin" />
-                    </div>
+                <div className="mt-4">
+                    <Loader className="animate-spin text-white w-8 h-8" />
+                </div>
                 )}
 
                 {/* Image Output */}
                 {image && (
-                    <div className="mt-8 flex flex-col items-center">
-                        <img
-                            src={image}
-                            alt="AI Generated"
-                            className="max-w-full h-[500px] rounded-lg shadow-lg"
-                            loading="lazy"
-                            onLoad={handleImageLoad}
-                            onError={handleImageError}
-                        />
-                        {image && (
-                            <p className="text-sm sm:text-base md:text-lg text-white mt-2">
-                                Image generated successfully!
-                            </p>
-                        )}
-                        <Button onClick={handleDownloadImage} className="mt-4 mb-4 bg-orange-500 hover:bg-orange-800">
-                            Download
-                        </Button>
-                    </div>
+                <div className="mt-6 w-full">
+                    <img
+                    src={image}
+                    alt="AI Generated"
+                    className="w-full max-h-[400px] object-contain rounded-xl shadow-xl"
+                    loading="lazy"
+                    onLoad={handleImageLoad}
+                    onError={handleImageError}
+                    />
+                    <p className="text-white mt-3 text-base md:text-lg">Image generated successfully!</p>
+                    <Button
+                    onClick={handleDownloadImage}
+                    className="mt-4 bg-orange-500 hover:bg-orange-700"
+                    >
+                    Download
+                    </Button>
+                </div>
                 )}
             </div>
-        </div>
+            </div>
+
     );
 };
 
