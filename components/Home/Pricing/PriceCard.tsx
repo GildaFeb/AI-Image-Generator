@@ -1,5 +1,4 @@
 import { Separator } from '@radix-ui/react-separator';
-import { Type } from 'lucide-react';
 import React from 'react';
 
 type Props = {

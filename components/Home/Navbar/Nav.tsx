@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { NavLinks } from '@/constant/constant';
-import { MenuIcon, SearchIcon, ShoppingCart, UserIcon } from 'lucide-react';
+import { MenuIcon, SearchIcon, ShoppingCart } from 'lucide-react';
 
 type Props = {
   openNav: () => void;

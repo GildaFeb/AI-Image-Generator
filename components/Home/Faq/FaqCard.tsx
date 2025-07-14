@@ -14,7 +14,7 @@ const FaqCard = () => {
           How do I generate an image?
         </AccordionTrigger>
         <AccordionContent>
-          Simply enter a descriptive promqpt in the input field and click "Generate." The AI will
+          Simply enter a descriptive promqpt in the input field and click &quot;Generate.&quot; The AI will
           create an image based on your input.
         </AccordionContent>
       </AccordionItem>
@@ -24,7 +24,7 @@ const FaqCard = () => {
           Can I download the generated images?
         </AccordionTrigger>
         <AccordionContent>
-          Yes, you can download any generated image by clicking the "Download" button that appears
+          Yes, you can download any generated image by clicking the &quot;Download&quot; button that appears
           below the result.
         </AccordionContent>
       </AccordionItem>
@@ -44,8 +44,8 @@ const FaqCard = () => {
           What should I type in the prompt?
         </AccordionTrigger>
         <AccordionContent>
-          Be as specific and descriptive as possible. For example: "A futuristic city skyline at
-          sunset, cyberpunk style."
+          Be as specific and descriptive as possible. For example: &quot;A futuristic city skyline at
+          sunset, cyberpunk style.&quot;
         </AccordionContent>
       </AccordionItem>
     </Accordion>

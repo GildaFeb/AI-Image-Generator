@@ -1,5 +1,5 @@
 import { NavLinks } from '@/constant/constant';
-import { MenuIcon, SearchIcon, ShoppingCart, XIcon } from 'lucide-react';
+import { XIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
