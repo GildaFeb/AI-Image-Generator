@@ -1,7 +1,8 @@
 
+import { Button } from '@/components/ui/button';
 import Home from '@/components/Home/Home';
 
-const HomePage = () => {
+function HomePage(){
   return (
     <div>
       {
@@ -26,3 +27,17 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+import React from 'react';
+
+// basic routing in Next.js 13 with app directory
+// this file is used to handle dynamic routes
+// (invisible)\product\product-detail\[id]
+// const ProductDetails = ({ params }: { params: { id: string } }) => {
+//   const id = params.id;
+//   return (
+//     <div>ProductDetails {id}</div>
+//   );
+// };
+
+// export default ProductDetails;
