@@ -2,9 +2,6 @@
   "name": "ai-image-generator",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "build": "next build",
     "start": "next start",

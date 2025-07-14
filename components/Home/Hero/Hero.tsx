@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Loader } from 'lucide-react';
 import React, { useState } from 'react';
 import { toast } from 'sonner';
+
 function isAxiosError(error: unknown): error is {
   response?: { data?: { message?: string } };
   message: string;
@@ -12,9 +13,10 @@ function isAxiosError(error: unknown): error is {
     typeof error === 'object' &&
     error !== null &&
     'message' in error &&
-    typeof (error as any).message === 'string'
+    typeof (error as { message: unknown }).message === 'string'
   );
 }
+
 
 const Hero = () => {
   const [prompt, setPrompt] = useState('');
