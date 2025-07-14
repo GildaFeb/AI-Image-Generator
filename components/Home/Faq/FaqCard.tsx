@@ -35,7 +35,7 @@ const FaqCard = () => {
         </AccordionTrigger>
         <AccordionContent>
           Generated images are AI-created and typically free to use, but always check the usage
-          rights if you're using them commercially.
+          rights if you&apos;re using them commercially.
         </AccordionContent>
       </AccordionItem>
 

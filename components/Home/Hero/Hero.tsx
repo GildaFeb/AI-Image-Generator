@@ -4,6 +4,17 @@ import axios from 'axios';
 import { Loader } from 'lucide-react';
 import React, { useState } from 'react';
 import { toast } from 'sonner';
+function isAxiosError(error: unknown): error is {
+  response?: { data?: { message?: string } };
+  message: string;
+} {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'message' in error &&
+    typeof (error as any).message === 'string'
+  );
+}
 
 const Hero = () => {
   const [prompt, setPrompt] = useState('');
@@ -11,63 +22,57 @@ const Hero = () => {
   const [loading, setLoading] = useState(false);
 
   const handleGenerateImage = async () => {
-    setLoading(true);
-    const options = {
-      method: 'POST',
-      url: 'https://ai-image-generator-free.p.rapidapi.com/generate/stream',
-      headers: {
-        'x-rapidapi-key': '54619da89emsh1af7d69ba81945ap1fab8ejsnf8dfa3f028c1',
-        'x-rapidapi-host': 'ai-image-generator-free.p.rapidapi.com',
-        'Content-Type': 'application/json',
-      },
-      // Remove type from axios.request, let axios handle it dynamically
-      data: {
-        prompt: prompt,
-        negativePrompt: '',
-        guidancescale: 7.5,
-        style: '(No style)',
-      },
-    };
+  setLoading(true);
 
-    try {
-      const response: any = await axios.request(options);
-      let imageUrl = '';
-      // Find the JSON part in the response string
-      const jsonString = response.data.trim().split('\n').pop(); // gets last line
-      const parsedData = JSON.parse(jsonString);
-
-      if (parsedData?.urls && Array.isArray(parsedData.urls)) {
-        imageUrl = parsedData.urls[0];
-      }
-
-      console.log('Parsed JSON:', parsedData);
-      console.log('Generated image URL:', imageUrl);
-      setImage(imageUrl);
-    } catch (error: unknown) {
-      if ((axios as any).isAxiosError(error as any)) {
-        const axiosError = error as any;
-        if (axiosError.response) {
-          console.error('Axios error:', axiosError.response);
-          toast.error(
-            `Error: ${axiosError.response?.data && (axiosError.response.data as any).message ? (axiosError.response.data as any).message : axiosError.message}`,
-            { style: { background: 'white', color: 'black' } },
-          );
-        } else {
-          toast.error(axiosError.message, { style: { background: 'white', color: 'black' } });
-        }
-      } else if (error instanceof Error) {
-        const err = error as Error;
-        console.error('Unexpected error:', err);
-        toast.error(err.message, { style: { background: 'white', color: 'black' } });
-      } else {
-        toast.error('An unexpected error occurred.', {
-          style: { background: 'white', color: 'black' },
-        });
-      }
-    } finally {
-      setLoading(false);
-    }
+  const options = {
+    method: 'POST',
+    url: 'https://ai-image-generator-free.p.rapidapi.com/generate/stream',
+    headers: {
+      'x-rapidapi-key': '54619da89emsh1af7d69ba81945ap1fab8ejsnf8dfa3f028c1',
+      'x-rapidapi-host': 'ai-image-generator-free.p.rapidapi.com',
+      'Content-Type': 'application/json',
+    },
+    data: {
+      prompt,
+      negativePrompt: '',
+      guidancescale: 7.5,
+      style: '(No style)',
+    },
   };
+
+  try {
+    const response = await axios.request(options);
+   const rawData: unknown = response.data;
+  const jsonString =
+    typeof rawData === 'string'
+      ? rawData.trim().split('\n').pop()
+      : '';
+  const parsedData: { urls?: string[] } = JSON.parse(jsonString || '{}');
+
+    const imageUrl = Array.isArray(parsedData?.urls) ? parsedData.urls[0] : '';
+    setImage(imageUrl);
+  } catch (error: unknown) {
+    if (isAxiosError(error)) {
+      const message = error.response?.data?.message ?? error.message;
+      toast.error(`Error: ${message}`, {
+        style: { background: 'white', color: 'black' },
+      });
+    } else if (error instanceof Error) {
+      toast.error(error.message, {
+        style: { background: 'white', color: 'black' },
+      });
+    } else {
+      toast.error('An unexpected error occurred.', {
+        style: { background: 'white', color: 'black' },
+      });
+    }
+  } finally {
+    setLoading(false);
+  }
+
+  
+};
+
 
   const handleDownloadImage = () => {
     if (!image) return;
